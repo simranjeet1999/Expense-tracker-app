@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 center-align" style="text-align: center;">
+            <img src="assets\login_image.png" />
+        </div>
+        <div class="col-12 for-the-rest">
+        <h1 style="margin: 0; font-weight:600;text-align:center;font-family: serif;padding: 24px 0px;">Simple Solution for your Budget</h1>
+
+        </div>
+        <div class="for-the-rest">
+        <div class="mt-4" style="margin-inline: auto;">
+            <div class="card shadow">
+                <div class="card-body" style="background-color: bisque;">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted" style="font-weight: 700;">Login</h4>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email</label>
+                          <input type="email" class="form-control input-style" name="email" [(ngModel)]="email">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control input-style" name="password" [(ngModel)]="password">
+                        </div>
+                        <button type="button" class="btn btn-info" (click)="login()">Login</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/forgot-password" class="text-dark" style="text-decoration: none; font-size: 12px;font-weight: 700;"> Forgot Password ? </a>
+                            </div>
+                            <div class="col-md-6">
+                               <span style="font-size: 12px;font-weight: 700;">Don't have an account...</span> <a href="/register" style="text-decoration: none; color:blue;font-size: 12px;font-weight: 700;">Sign Up</a>
+                            </div>
+                         
+                        </div>
+                        <!-- <div class="row mt-2">
+                            <a (click)="signInWithGoogle()" style="text-decoration: none;cursor: pointer;">
+                                <div class="card shadow text-center">
+                                    <div class="card-body">
+                                        <img src="../../../assets/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+</div>
