@@ -1,0 +1,60 @@
+<header>
+    <h1>Expense Tracker App</h1>
+  </header>
+  
+  <div class="d-flex" style="height: 100%;margin:0">
+    <div  style="height: 100%;margin:0; padding:0">
+  <nav>
+    <ul>
+        <li><a routerLink="/dashboard">Home</a></li>
+        <li><a routerLink="/categories">Categories</a></li>
+        <li class="active"><a routerLink="/expenses">Expenses</a></li>
+    
+    
+      </ul>
+  </nav>
+  </div>
+  <div class="new-chart-card">
+  <div class="new">
+  
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" />
+      
+        <label for="id">ID:</label>
+        <input type="text" id="id" formControlName="id" />
+      
+        <label for="status">Status:</label>
+        <input type="text" id="status" formControlName="status" />
+      
+        <button type="submit" [disabled]="!expenseForm.valid">Submit</button>
+       
+    
+    
+      </form>
+      
+      <button type="update" (click)="updateExpense()" >Update</button>
+      <button type="delete" (click)="deleteExpense()" >Delete</button>
+      <button type="all type" (click)=" getAllExpensesByType('simran')" >all types</button>
+      </div>
+      <div class="chart-table-data">
+      <div class="chart-container">
+  
+        nkj
+    </div>
+    <div>
+    nknk
+    </div>
+    </div>
+  </div>
+  </div>
+  
+    <footer>
+    <p>&copy; 2023 Expense Tracker App</p>
+  </footer>
+  
+  
+    
+
+
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,8 +15,17 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MatCardModule } from '@angular/material/card';
+import { NgChartsModule } from 'ng2-charts';
+import { ExpensesComponent } from './component/expenses/expenses.component';
+import { CategoriesComponent } from './component/categories/categories.component';
+import {MatChipsModule}  from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatListModule} from '@angular/material/list'
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] ,
   declarations: [
     AppComponent,
     LoginComponent,
@@ -26,16 +35,26 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     VerifyEmailComponent,
     HeaderComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
+    ExpensesComponent,
+    CategoriesComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFirestoreModule,
+    MatFormFieldModule,
+    NgChartsModule,
+    MatListModule,
+    MatChipsModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
+  exports:[MatChipsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

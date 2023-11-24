@@ -14,3 +14,143 @@
     background-color: #A0E6D5;
     font-weight: 700;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* header.component.css */
+header {
+    background-color: #4caf50; /* Bright green */
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+  /* footer.component.css */
+  footer {
+    background-color: #4caf50; /* Bright green */
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  nav {
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* expense.component.css */
+  div {
+    margin: 20px;
+    display: flex;
+    // justify-content: space-between;
+  }
+  
+  mat-card {
+    width: 45%; /* Adjust the width as needed */
+    box-sizing: border-box;
+  }
+  .income{
+    width: 91%; /* Adjust the width as needed */
+    height: 106%;
+    box-sizing: border-box;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  .content-card {
+    margin: 20px;
+    width: 400px;
+  }
+  
+  form {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 8px 15px;
+    margin-right: 10px;
+  }
+  /* app.component.css */
+  /* app.component.css */
+  .app-container {
+    display: flex;
+  }
+  
+  .side-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px; /* Adjust margin as needed */
+  }
+  
+  .total-expenses-card {
+    width: 100%; /* Adjust the width as needed */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Adjust margin as needed */
+  }
+  
+  .new{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1127px;
+  }
+  .new-chart-card{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+   margin-left: 60px !important;
+  }
+  .chart-container {
+    margin-top: 20px;
+  }
+  .chart-table-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+  }
+  .chart-size{
+    width: 100% !important;
+  }
+  
+.active{
+    background-color: red;
+}
+  
+  
+  
+  

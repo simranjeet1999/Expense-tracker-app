@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { SharedServiceService } from './shared-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireauth : AngularFireAuth, private router : Router) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router,private sharedService:SharedServiceService) { }
 
   login(email : string, password : string) {
         this.fireauth.signInWithEmailAndPassword(email,password).then( res => {
         localStorage.setItem('token','true');
-
-         
+         this.sharedService.userId = email
         if(res.user?.emailVerified == true) {
+          console.log('userid', email)
           this.router.navigate(['dashboard']);
+
         } else {
           this.router.navigate(['/verify-email']);
         }

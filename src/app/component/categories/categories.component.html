@@ -1,0 +1,55 @@
+<header>
+    <h1>Expense Tracker App</h1>
+  </header>
+  
+  <div class="d-flex" style="height: 100%;margin:0">
+    <div  style="height: 100%;margin:0; padding:0">
+  <nav>
+    <ul>
+      <li><a routerLink="/dashboard">Home</a></li>
+      <li class="active"><a routerLink="/categories">Categories</a></li>
+      <li><a routerLink="/expenses">Expenses</a></li>
+
+
+    </ul>
+  </nav>
+  </div>
+  <div class="new-chart-card">
+    <!-- <mat-form-field>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let category of fruits" [selectable]="selectable" [removable]="removable" (removed)="removeCategory(category)">
+            {{ category }}
+            <mat-icon matChipRemove (click)="removeCategory(category)" *ngIf="removable">X</mat-icon>
+          </mat-chip>
+          <input placeholder="Add category" [(ngModel)]="newCategory" (keyup.enter)="addCategory(chipList)" />
+        </mat-chip-list>
+      </mat-form-field> -->
+      <form class="example-form">
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let category of fruits" [selectable]="selectable"
+                   [removable]="removable" (removed)="removeCategory(category)">
+            {{category.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Add category" [formControl]="newCategory" (keyup.enter)="addCategory(chipList)" />
+ 
+        </mat-chip-list>
+      </mat-form-field>
+      </form>
+
+
+
+
+  </div>
+  </div>
+  
+    <footer>
+    <p>&copy; 2023 Expense Tracker App</p>
+  </footer>
+  
+  
+    
+
+
+
