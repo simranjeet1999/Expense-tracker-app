@@ -1,0 +1,36 @@
+/* category-manager.component.css */
+// .category-manager-container {
+//     display: grid;
+//     padding: 20px;
+//   }
+  
+//   mat-form-field {
+//     width: 100%;
+//     margin-bottom: 10px;
+//   }
+  
+//   .button-container {
+//     display: flex;
+//     justify-content: space-between;
+//     margin-top: 10px;
+//   }
+.category-manager-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .add-category-card,
+  .display-categories-card {
+    width: 45%; /* Adjust the width as needed */
+    height: 58%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-category-card {
+    margin-right: 10px;
+  }
+  
+  .display-categories-card {
+    margin-left: 10px;
+  }

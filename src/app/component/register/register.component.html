@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row" style="margin-top: 172px;">
         <div class="col-12">
             <div class="card shadow">
@@ -27,4 +27,32 @@
         </div>
         <div class="col"></div>
     </div>
+</div> -->
+
+<div class="container-fluid" style="background-image: url('assets/login_background.png'); background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+    <div class="card shadow" style="width: 300px; background-color: aliceblue;">
+        <div class="card-body">
+            <form>
+                <div class="mb-3 text-center">
+                    <h4 class="text-dark text-muted" style="font-weight: 700;">Register</h4>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" class="form-control input-style" name="email" [(ngModel)]="email">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control input-style" name="password" [(ngModel)]="password">
+                </div>
+                <button type="button" class="btn btn-info btn-block" (click)="register()">Register</button>
+                <div class="row mt-2">
+                    <div class="col-md-12 text-center">
+                        <span style="font-size: 12px;font-weight: 700;">Have an account...</span> <a href="/login" style="text-decoration: none; color:blue;font-size: 12px;font-weight: 700;"><span>Login</span></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

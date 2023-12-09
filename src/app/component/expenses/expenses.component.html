@@ -1,5 +1,7 @@
 <header>
     <h1>Expense Tracker App</h1>
+    <img (click)="logOut()" src="assets/log_out.png" style="width: 30px; height:30px;float:right;transform: translateY(-40px);" />
+
   </header>
   
   <div class="d-flex" style="height: 100%;margin:0">
@@ -8,45 +10,86 @@
     <ul>
         <li><a routerLink="/dashboard">Home</a></li>
         <li><a routerLink="/categories">Categories</a></li>
-        <li class="active"><a routerLink="/expenses">Expenses</a></li>
+        <li id="expenseActive" class="active"><a routerLink="/expenses">Expenses</a></li>
     
     
       </ul>
   </nav>
   </div>
-  <div class="new-chart-card">
-  <div class="new">
+  <div class="expenses-container">
+    <!-- First Mat Card: Expenses -->
+    <mat-card class="expenses-card" >
+      <mat-card-header>
+        <mat-card-title class="font-for-titles">Expense Form</mat-card-title>
+      </mat-card-header>
   
-    <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" />
-      
-        <label for="id">ID:</label>
-        <input type="text" id="id" formControlName="id" />
-      
-        <label for="status">Status:</label>
-        <input type="text" id="status" formControlName="status" />
-      
-        <button type="submit" [disabled]="!expenseForm.valid">Submit</button>
-       
-    
-    
-      </form>
-      
-      <button type="update" (click)="updateExpense()" >Update</button>
-      <button type="delete" (click)="deleteExpense()" >Delete</button>
-      <button type="all type" (click)=" getAllExpensesByType('simran')" >all types</button>
-      </div>
-      <div class="chart-table-data">
-      <div class="chart-container">
+      <mat-card-content>
+        <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+          <label for="expenseName">Expense Name:</label>
+          <input type="text" id="expenseName" formControlName="expenseName"  />
   
-        nkj
-    </div>
-    <div>
-    nknk
-    </div>
-    </div>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" formControlName="amount" />
+  
+          <label for="expenseDate">Expense Date:</label>
+          <input type="date" id="expenseDate" formControlName="expenseDate" />
+  
+            <select placeholder="Expense Category" formControlName="expenseCategory">
+              <option *ngFor="let category of sharedService.expensesCategory" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+  
+          <label for="comments">Comments:</label>
+          <textarea id="comments" formControlName="comments"></textarea>
+  
+          <button type="submit" id="submit-expense" mat-raised-button color="primary" [disabled]="!expenseForm.valid">Submit Expense</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Second Mat Card: Income -->
+    <mat-card class="income-card" style="margin-left: 16px;">
+      <mat-card-header>
+        <mat-card-title class="font-for-titles">Income Form</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form [formGroup]="incomeForm" (ngSubmit)="submitIncome()" >
+          <label for="incomeAmount">Income Amount:</label>
+          <input type="number" id="incomeAmount" formControlName="incomeAmount" />
+  
+          <label for="incomeDescription">Income Description:</label>
+          <textarea id="incomeDescription" formControlName="incomeDescription"></textarea>
+  
+          <button type="submit" id="submit-income" mat-raised-button color="primary" [disabled]="incomeFormSubmitted || !incomeForm.valid">Submit Income</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="additional-income-card" style="margin-left: 16px;">
+        <mat-card-header>
+          <mat-card-title class="font-for-titles">Additional Income Form</mat-card-title>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <form [formGroup]="additionalIncomeForm" (ngSubmit)="submitAdditionalIncome()" >
+            <label for="additionalIncomeAmount">Additional Income Amount:</label>
+            <input type="number" id="additionalIncomeAmount" formControlName="additionalIncomeAmount" />
+      
+            <label for="additionalIncomeDetails">Additional Income Details:</label>
+            <textarea id="additionalIncomeDetails" formControlName="additionalIncomeDetails"></textarea>
+      
+            <button type="submit" id="additionalincome-button" mat-raised-button color="primary" [disabled]="additionalIncomeFormSubmitted || !additionalIncomeForm.valid">Submit Additional Income</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
   </div>
+  
+  <footer>
+    <p>&copy; 2023 Expense Tracker App</p>
+  </footer>
   </div>
   
     <footer>

@@ -4,6 +4,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { SharedServiceService } from 'src/app/shared/shared-service.service';
 import { MatChipGrid } from '@angular/material/chips';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/shared/auth.service';
 
 export interface Fruit {
   name: string;
@@ -16,41 +17,28 @@ export interface Fruit {
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
-  visible = true;
- 
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits:any
-  selectable = true;
-  removable = true;
-  newCategory = new FormControl();
-
-  constructor(private sharedService:SharedServiceService){
-    this.fruits=this.sharedService.expensesCategory
+  categories: string[] = ['Groceries', 'Clothing', 'Electronics']
+  newCategory: string = '';
+constructor(private sharedService: SharedServiceService, private auth:AuthService){
+this.categories = this.sharedService.expensesCategory
+}
+  addCategory(): void {
+    const category = this.newCategory.trim();
+    if (category && !this.categories.includes(category)) {
+      this.categories.push(category);
+      this.newCategory = '';
+    }
+    this.sharedService.expensesCategory=this.categories
   }
 
-  addCategory(chiplist:any): void {
-    const input = chiplist.input;
-    const value = chiplist.value;
+  removeCategory(index: number): void {
+    this.categories.splice(index, 1);
+    this.sharedService.expensesCategory=this.categories
 
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.fruits.push({name: value.trim()});
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
   }
-
-  removeCategory(category: string): void {
-    const index = this.fruits.indexOf(category);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
-    }
+  logOut(){
+    this.auth.logout()
+  }
   
-  }
   
 }

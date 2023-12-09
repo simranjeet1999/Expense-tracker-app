@@ -1,5 +1,7 @@
 <header>
   <h1>Expense Tracker App</h1>
+  <img (click)="logOut()" id="logout" src="assets/log_out.png" style="width: 30px; height:30px;float:right; transform: translateY(-40px);" />
+  
 </header>
 
 <div class="d-flex" style="height: 100%;margin:0">
@@ -14,68 +16,146 @@
   </ul>
 </nav>
 </div>
-<div class="new-chart-card">
+<div class="new-chart-card" style="margin-top: 40px;">
 <div class="new">
-
-<mat-card class="income">
+<div  *ngIf="total >= 0;else noDataIncome">
+<mat-card  class="income">
   <mat-card-header>
-    <mat-card-title>Income</mat-card-title>
+    <mat-card-title class="font-for-titles">Income</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content style="padding: 0 34px;">
+    <p class="data-value">{{total | currency}}</p>
+<p>
+  
+  <span class="label-for-addition">Additional Income : </span>
+  <span class="value-for-semi-labels">{{additionalincomedata | currency}}</span>
+</p>
+
+
     <!-- Add content for income card -->
     <!-- Example: <p>Total income: $1000</p> -->
   </mat-card-content>
 </mat-card>
-
-
-  <mat-card class="income">
+</div>
+<ng-template #noDataIncome>
+  <mat-card  class="income">
     <mat-card-header>
-      <mat-card-title>Expense</mat-card-title>
+      <mat-card-title  class="font-for-titles">Income</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content style="padding: 0 34px;">
+      <p style="text-align: center; padding: 20px; margin-top: 46px;">No data is available.</p>
+    </mat-card-content>
+  </mat-card>
+
+</ng-template>
+
+<div  *ngIf="variableForExpense >= 0;else noDataExpenses">
+  <mat-card class="income" >
+    <mat-card-header>
+      <mat-card-title class="font-for-titles">Expense</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="padding: 0 34px;">
+      <p class="data-value">{{sharedService?.onlyTheExpenseAmount | currency}}</p>
+      <p *ngIf="isExpenseGreater" style="color:red">Expenses has exceeded the income value.</p>
+      <p *ngIf="!isExpenseGreater" style="color: green;">You are in good shape</p>
       <!-- Add content for income card -->
       <!-- Example: <p>Total income: $1000</p> -->
     </mat-card-content>
   </mat-card>
-  
-    <mat-card class="income">
+  </div>
+  <ng-template #noDataExpenses>
+    <mat-card  class="income" >
       <mat-card-header>
-        <mat-card-title>Total Balance</mat-card-title>
+        <mat-card-title  class="font-for-titles">Expenses</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <!-- Add content for income card -->
-        <!-- Example: <p>Total income: $1000</p> -->
+      <mat-card-content style="padding: 0 34px;">
+        <p style="text-align: center; padding: 20px; margin-top: 46px;">No data is available.</p>
       </mat-card-content>
     </mat-card>
-    
-    </div>
-    <div class="chart-table-data">
-    <div class="chart-container">
+  
+  </ng-template>
+  
+ 
+  
 
+    </div>
+    <div class="chart-container">
+      <div  *ngIf="sharedService?.expensesFormData?.length > 0;else noData">
+      <mat-card  class="income">
+        <mat-card-header style="padding-bottom:14px;">
+          <mat-card-title  class="font-for-titles">Expenses Summary</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="padding: 0 69px;">
+          <!-- <app-piechart [data]="groupedExpenses"></app-piechart> -->
+          <div class="neww">
+            <canvas #pieChart ></canvas>
+            </div>
+        </mat-card-content>
+      </mat-card>
       
-  </div>
-  <div>
-    <mat-card class="income chart-size">
-      <mat-card-header>
-        <mat-card-title>Recent Transactions</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-<div *ngFor="let transaction of recentTransactions">
-        <mat-card class="income transaction-card">
-          <mat-card-header>
-            <mat-card-title>{{ transaction.description }}</mat-card-title>
+      </div>
+      <ng-template #noData>
+        <mat-card  class="income">
+          <mat-card-header style="padding-bottom:14px;">
+            <mat-card-title  class="font-for-titles"  >Expenses Summary</mat-card-title>
           </mat-card-header>
-          <mat-card-content>
-            <p>Amount: {{ transaction.amount | currency }}</p>
-            <!-- Add other transaction details as needed -->
+          <mat-card-content style="padding: 0 34px;">
+            <p style="text-align: center; padding: 20px; margin-top: 46px;">No data is available.</p>
           </mat-card-content>
         </mat-card>
+      
+      </ng-template>
+<div  *ngIf="sharedService?.expensesFormData?.length > 0;else noDataRecent">
+    <mat-card class="income chart-size" style="max-height: 427px; 
+    overflow: scroll;">
+      <mat-card-header style="padding-bottom:14px;">
+        <mat-card-title  class="font-for-titles" style="padding-bottom: 13px;">Recent Transactions</mat-card-title>
+      
+      </mat-card-header>
+      <mat-card-content>
+<div *ngFor="let transaction of sharedService.expensesFormData">
+
+        <mat-card class="income transaction-card">
+          <mat-card-header>
+            <mat-card-title>{{ transaction.expenseName }}</mat-card-title>
+          </mat-card-header>
+          <div class="transaction-container">
+          <mat-card-content>
+         
+            <p>Amount: {{ transaction.amount | currency }}</p>
+            <p>Expense Category: {{ transaction.expenseCategory }}</p>
+
+            <!-- Add other transaction details as needed -->
+          
+          </mat-card-content>
+        </div>
+          <div class="icon-container">
+            <!-- Update Icon -->
+            <mat-icon (click)="updateTransaction(transaction,transaction.documentId)">edit</mat-icon>
+            <!-- Delete Icon -->
+            <mat-icon style="margin-left: 2px; color:red;" id="icon" (click)="deleteTransaction(transaction,transaction.documentId)">delete</mat-icon>
+
+          </div>
+        </mat-card>
+      
       </div>
       </mat-card-content>
+      
     </mat-card>
+    </div>
   </div>
+  <ng-template #noDataRecent>
+    <mat-card  class="income" >
+      <mat-card-header style="padding-bottom:14px;">
+        <mat-card-title  class="font-for-titles">Recent Transactions</mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="padding: 0 34px;">
+        <p style="text-align: center; padding: 20px; margin-top: 46px;">No data is available.</p>
+      </mat-card-content>
+    </mat-card>
+  
+  </ng-template>
   </div>
-</div>
 </div>
 
   <footer>

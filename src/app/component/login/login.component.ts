@@ -11,9 +11,9 @@ export class LoginComponent {
   email : string = '';
   password : string = '';
 
-  constructor(private auth : AuthService){}
+  constructor(public auth : AuthService){}
   login() {
-
+console.log('dd',this.auth.errormessage)
     if(this.email == '') {
       alert('Please enter email');
       return;

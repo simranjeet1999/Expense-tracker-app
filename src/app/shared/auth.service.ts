@@ -7,6 +7,7 @@ import { SharedServiceService } from './shared-service.service';
   providedIn: 'root'
 })
 export class AuthService {
+  errormessage: any;
 
   constructor(private fireauth : AngularFireAuth, private router : Router,private sharedService:SharedServiceService) { }
 
@@ -24,10 +25,12 @@ export class AuthService {
 
     }, err => {
         alert(err.message);
+        this.errormessage=err.message
         this.router.navigate(['/login']);
     })
   }
   register(email : string, password : string) {
+    localStorage.clear()
     this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
       alert('Registration Successful');
       
@@ -36,6 +39,7 @@ export class AuthService {
 
     }, err => {
       alert(err.message);
+    
       this.router.navigate(['/register']);
     })
   }

@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+height: 100%;
+}
+
 .center-align{
     text-align: center;
     background-color: hotpink;
@@ -19,14 +24,14 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* header.component.css */
 header {
-    background-color: #4caf50; /* Bright green */
+    background-color: cadetblue; /* Bright green */
     color: #fff;
     text-align: center;
     padding: 1rem;
   }
   /* footer.component.css */
   footer {
-    background-color: #4caf50; /* Bright green */
+    background-color: cadetblue; /* Bright green */
     color: #fff;
     text-align: center;
     padding: 1rem;
@@ -34,6 +39,7 @@ header {
     bottom: 0;
     width: 100%;
   }
+  
   
   nav {
     width: 200px;
@@ -60,15 +66,16 @@ header {
   }
   
   /* expense.component.css */
-  div {
-    margin: 20px;
-    display: flex;
-    // justify-content: space-between;
-  }
+  // div {
+  //   margin: 20px;
+  //   display: flex;
+  //   // justify-content: space-between;
+  // }
   
   mat-card {
     width: 45%; /* Adjust the width as needed */
     box-sizing: border-box;
+    background-color: floralwhite !important;
   }
   .income{
     width: 91%; /* Adjust the width as needed */
@@ -128,7 +135,9 @@ header {
   
   .new{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+    padding-bottom: 120px;
+    grid-template-columns: 1fr 1fr;
     width: 1127px;
   }
   .new-chart-card{
@@ -137,9 +146,8 @@ header {
    margin-left: 60px !important;
   }
   .chart-container {
-    margin-top: 20px;
-  }
-  .chart-table-data{
+    margin-bottom: 21px;
+     padding-bottom: 120px;
     display: grid;
     grid-template-columns: 1fr 1fr ;
   }
@@ -150,7 +158,31 @@ header {
 .active{
     background-color: red;
 }
-  
-  
-  
-  
+.mat-mdc-text-field-wrapper {
+    width: 326px !important;
+}
+.mat-mdc-standard-chip {
+    margin-left: 25px;
+    margin-bottom:2px;
+}
+.mat-mdc-form-field-focus-overlay{
+    margin: 0 !important;
+}
+.font-for-titles{
+    font-size: 36px !important;
+    font-weight: 500 !important;
+    color: cadetblue !important;
+}
+.data-value{
+    font-size: 56px;
+    font-weight: 500;
+}
+.label-for-addition{
+    color: brown;
+    font-size: 16px;
+    font-weight: 500;
+}
+.value-for-semi-labels{
+    font-size: 16px;
+    font-weight: 600;
+}

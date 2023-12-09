@@ -1,0 +1,37 @@
+/* expenses.component.css */
+.expenses-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+    height: 84%;
+    width: 100%;
+  }
+  
+  .expenses-card,
+  .income-card {
+    width: 45%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expenses-card {
+  }
+  
+  .income-card {
+    margin-left: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .invalid-input {
+    border: 1px solid red;
+  }
+  .font-for-titles{
+    font-size: 24px !important;
+  }
+  .mat-mdc-card-header{
+    padding: 0!important;
+  }
+  

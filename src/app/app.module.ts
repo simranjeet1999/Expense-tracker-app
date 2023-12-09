@@ -23,7 +23,11 @@ import {MatChipsModule}  from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list'
 import { MatInputModule } from '@angular/material/input';
-
+import {MatButtonModule} from '@angular/material/button';
+import { UpdateExpenseComponent } from './component/update-expense/update-expense.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PiechartComponent } from './component/piechart/piechart.component';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA] ,
   declarations: [
@@ -37,7 +41,9 @@ import { MatInputModule } from '@angular/material/input';
     FooterComponent,
     SidenavComponent,
     ExpensesComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    UpdateExpenseComponent,
+    PiechartComponent
   ],
 
   imports: [
@@ -50,8 +56,11 @@ import { MatInputModule } from '@angular/material/input';
     MatListModule,
     MatChipsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatInputModule,
     MatCardModule,
+    MatIconModule,
+    MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   exports:[MatChipsModule],
